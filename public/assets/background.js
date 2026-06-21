@@ -58,8 +58,10 @@ function createNetwork(container, opts = {}) {
   }
   geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
+  const BASE_COLOR = opts.particleColor ?? 0x0d0d0d;
+  const CONVERGED_COLOR = opts.convergedColor ?? 0xcc0000;
   const pointsMaterial = new THREE.PointsMaterial({
-    color: opts.particleColor ?? 0x0d0d0d,
+    color: BASE_COLOR,
     size: opts.particleSize ?? 1.1,
     transparent: true,
     opacity: opts.particleOpacity ?? 0.55,
@@ -135,12 +137,17 @@ function createNetwork(container, opts = {}) {
   }
 
   let raf;
+  let converged = false;
+  const CONVERGE_RADIUS = 3;
   const clock = new THREE.Clock();
   const tmpToTarget = new THREE.Vector3();
   const tmpToHome = new THREE.Vector3();
   function tick() {
     const t = clock.getElapsedTime();
     const pos = points.geometry.attributes.position.array;
+    let minX = Infinity, maxX = -Infinity;
+    let minY = Infinity, maxY = -Infinity;
+    let minZ = Infinity, maxZ = -Infinity;
     for (let k = 0; k < COUNT; k++) {
       const j = k * 3;
       const cur = tmpToTarget.set(pos[j], pos[j + 1], pos[j + 2]);
@@ -164,8 +171,27 @@ function createNetwork(container, opts = {}) {
       pos[j] += vel.x;
       pos[j + 1] += vel.y;
       pos[j + 2] += vel.z;
+
+      if (pos[j] < minX) minX = pos[j];
+      if (pos[j] > maxX) maxX = pos[j];
+      if (pos[j + 1] < minY) minY = pos[j + 1];
+      if (pos[j + 1] > maxY) maxY = pos[j + 1];
+      if (pos[j + 2] < minZ) minZ = pos[j + 2];
+      if (pos[j + 2] > maxZ) maxZ = pos[j + 2];
     }
     points.geometry.attributes.position.needsUpdate = true;
+
+    // All particles gravitated into one spot → turn the cluster red.
+    // Reverts the instant the points spread back out.
+    const isConverged =
+      maxX - minX < CONVERGE_RADIUS &&
+      maxY - minY < CONVERGE_RADIUS &&
+      maxZ - minZ < CONVERGE_RADIUS;
+    if (isConverged !== converged) {
+      converged = isConverged;
+      pointsMaterial.color.set(converged ? CONVERGED_COLOR : BASE_COLOR);
+    }
+
     rebuildLines();
     renderer.render(scene, camera);
     raf = requestAnimationFrame(tick);
