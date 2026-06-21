@@ -24,6 +24,42 @@
     setTimeout(function () { els.forEach(function (e) { e.classList.add('in'); }); }, 2500);
   })();
 
+  // ---- buzzer siren ---------------------------------------------------------
+  (function () {
+    var btn = document.querySelector('.buzzer-wrap');
+    if (!btn) return;
+    var ctx;
+    btn.addEventListener('click', function () {
+      var AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      if (!ctx) ctx = new AudioCtx();
+      if (ctx.state === 'suspended') ctx.resume();
+
+      var now = ctx.currentTime;
+      var duration = 1.4;
+      var osc = ctx.createOscillator();
+      var gain = ctx.createGain();
+      osc.type = 'sawtooth';
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      // Classic two-tone siren sweep.
+      osc.frequency.setValueAtTime(500, now);
+      for (var i = 0; i < 4; i++) {
+        var t = now + i * 0.35;
+        osc.frequency.linearRampToValueAtTime(900, t + 0.175);
+        osc.frequency.linearRampToValueAtTime(500, t + 0.35);
+      }
+      gain.gain.setValueAtTime(0, now);
+      gain.gain.linearRampToValueAtTime(0.25, now + 0.05);
+      gain.gain.setValueAtTime(0.25, now + duration - 0.15);
+      gain.gain.linearRampToValueAtTime(0, now + duration);
+
+      osc.start(now);
+      osc.stop(now + duration);
+    });
+  })();
+
   // ---- dummy collections ---------------------------------------------------
   // Each theme is a collection of placeholder images (picsum.photos, grayscale,
   // stable seeds so they don't reshuffle on reload). Swap these arrays for real

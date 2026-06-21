@@ -139,25 +139,37 @@
     </div>
     <div class="reveal">
       <p class="body">Am Bauzaun beginnt das Projekt im öffentlichen Raum. Wer stehen bleibt, liest, klingelt oder schweigt, wird Teil des Prozesses. Chance2030 sammelt nicht nur Antworten, sondern auch Zögern, Abwesenheit und Nicht-Resonanz.</p>
-      <div class="plaque">
-        <div class="ph" aria-hidden="true"></div>
-        <div class="pb">
-          <div class="plab">Hinweis am Zaun</div>
-          <div class="ptxt">Für erste Zaungespräche bitte klingeln.</div>
+      <div class="zaun-cta">
+        <button class="buzzer-wrap" type="button" aria-label="Buzzer auslösen">
+          <svg class="buzzer-icon" width="120" height="120" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="buzzerDome" cx="40%" cy="30%" r="78%">
+                <stop offset="0%" stop-color="#ff8a4c"/>
+                <stop offset="48%" stop-color="#f24f1c"/>
+                <stop offset="100%" stop-color="#bf350d"/>
+              </radialGradient>
+            </defs>
+            <!-- dark base -->
+            <rect x="30" y="126" width="140" height="48" rx="8" fill="#34373c"/>
+            <!-- light top plate -->
+            <rect x="22" y="110" width="156" height="32" rx="6" fill="#e7e9eb"/>
+            <rect x="22" y="110" width="156" height="32" rx="6" fill="none" stroke="#c6c9cc" stroke-width="2"/>
+            <!-- corner bolt holes -->
+            <circle cx="40" cy="126" r="7.5" fill="#2b2d31"/>
+            <circle cx="160" cy="126" r="7.5" fill="#2b2d31"/>
+            <!-- glossy orange dome -->
+            <circle cx="100" cy="84" r="66" fill="url(#buzzerDome)"/>
+            <ellipse cx="78" cy="52" rx="27" ry="16" fill="#ffffff" opacity="0.38"/>
+          </svg>
+        </button>
+        <div class="plaque">
+          <div class="ph" aria-hidden="true"></div>
+          <div class="pb">
+            <div class="plab">Hinweis am Zaun</div>
+            <div class="ptxt">Für erste Zaungespräche bitte klingeln.</div>
+          </div>
+          <div class="ph" aria-hidden="true"></div>
         </div>
-        <div class="ph" aria-hidden="true"></div>
-      </div>
-      <div class="buzzer-wrap" aria-hidden="true">
-        <svg class="buzzer-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="100" cy="172" rx="58" ry="10" fill="#0d0d0d" opacity="0.12"/>
-          <rect x="70" y="150" width="60" height="26" rx="6" fill="#3a3a3a"/>
-          <rect x="78" y="140" width="44" height="16" rx="4" fill="#1f1f1f"/>
-          <circle cx="100" cy="95" r="80" fill="#8a0000"/>
-          <circle cx="100" cy="95" r="80" fill="none" stroke="#5c0000" stroke-width="4"/>
-          <circle cx="100" cy="88" r="62" fill="#c40000"/>
-          <circle cx="100" cy="88" r="62" fill="none" stroke="#8a0000" stroke-width="3"/>
-          <ellipse cx="78" cy="62" rx="22" ry="13" fill="#ffffff" opacity="0.22"/>
-        </svg>
       </div>
     </div>
   </div>
