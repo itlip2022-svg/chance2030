@@ -153,6 +153,25 @@ p.body + p.body{margin-top:1.1em;}
   margin:clamp(1.4rem,3.4vh,2.4rem) 0 0;
   max-width:18ch;
 }
+.audio-player{
+  margin-top:clamp(1.2rem,3vh,2rem);
+  display:flex;
+  flex-direction:column;
+  gap:.5rem;
+  max-width:30rem;
+}
+.audio-label{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:.7rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.audio-player audio{
+  width:100%;
+  height:40px;
+}
 .hero-body{
   margin-top:clamp(2rem,5vh,3.4rem);
   max-width:64ch;
