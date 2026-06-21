@@ -493,6 +493,28 @@ footer{
 }
 .foot-grid a{border-bottom:1px solid var(--line);padding-bottom:.1em;}
 .foot-grid a:hover{border-color:var(--ink);}
+.foot-credit{
+  margin-top:clamp(2.4rem,6vh,4rem);
+  padding-top:1.6rem;
+  border-top:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  gap:1.2rem;
+}
+.foot-credit-text{
+  font-family:var(--display);
+  font-size:.78rem;
+  letter-spacing:.04em;
+  line-height:1.6;
+  color:var(--muted);
+}
+.masart-logo{
+  flex:0 0 auto;
+  display:inline-flex;
+  line-height:0;
+  transition:opacity .2s ease;
+}
+.masart-logo:hover{opacity:.7;}
 
 /* ---- reveal ---- */
 .reveal{opacity:0;transform:translateY(26px);transition:opacity 1s cubic-bezier(.22,1,.36,1),transform 1s cubic-bezier(.22,1,.36,1);}
