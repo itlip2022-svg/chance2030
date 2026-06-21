@@ -258,6 +258,17 @@ section.block{padding-top:clamp(4.5rem,11vh,9rem);padding-bottom:clamp(4.5rem,11
   letter-spacing:-.01em;
 }
 
+.buzzer-wrap{
+  margin-top:clamp(1.6rem,4vh,2.4rem);
+  display:flex;
+  justify-content:flex-start;
+}
+.buzzer-icon{
+  width:clamp(96px,12vw,140px);
+  height:auto;
+  filter:drop-shadow(0 6px 10px rgba(0,0,0,.18));
+}
+
 /* ============ IMAGE SLOTS (dummy images → collection lightbox) ============ */
 .slot{
   display:block;
