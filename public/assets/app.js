@@ -77,7 +77,7 @@
   var COUNT_WORD = LANG === 'en' ? 'images' : 'Bilder';
 
   var COLLECTIONS = {
-    bauzaun:   { title: 'Bauzaun',                   en: 'Construction fence',        eyebrow: 'Der Ort · 01', eyebrowEn: 'The Place · 01', images: pics('bauzaun', 6) },
+    bauzaun:   { title: 'Bauzaun',                   en: 'Construction fence',        eyebrow: 'Der Ort · 01', eyebrowEn: 'The Place · 01', images: ['/assets/collections/bauzaun.jpg'] },
     garten:    { title: 'Garten',                    en: 'Garden',                    eyebrow: 'Der Ort · 02', eyebrowEn: 'The Place · 02', images: pics('garten', 6) },
     haeuschen: { title: 'Altes Häuschen',            en: 'Old cottage',               eyebrow: 'Der Ort · 03', eyebrowEn: 'The Place · 03', images: pics('haeuschen', 5) },
     detail:    { title: 'Baustellendetails',         en: 'Construction details',      eyebrow: 'Der Ort · 04', eyebrowEn: 'The Place · 04', images: pics('detail', 7) },
