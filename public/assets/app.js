@@ -60,38 +60,27 @@
     });
   })();
 
-  // ---- dummy collections ---------------------------------------------------
-  // Each theme is a collection of placeholder images (picsum.photos, grayscale,
-  // stable seeds so they don't reshuffle on reload). Swap these arrays for real
-  // photo URLs later — the slot/lightbox logic stays the same.
-  function pics(seed, n) {
-    var out = [];
-    for (var i = 1; i <= n; i++) {
-      out.push('https://picsum.photos/seed/c2030-' + seed + '-' + i + '/1000/1250?grayscale');
-    }
-    return out;
-  }
-
+  // ---- collections -----------------------------------------------------------
   // Language is taken from <html lang>. EN labels fall back to DE when missing.
   var LANG = (document.documentElement.lang || 'de').toLowerCase().indexOf('en') === 0 ? 'en' : 'de';
   var COUNT_WORD = LANG === 'en' ? 'images' : 'Bilder';
 
   var COLLECTIONS = {
     bauzaun:   { title: 'Bauzaun',                   en: 'Construction fence',        eyebrow: 'Der Ort · 01', eyebrowEn: 'The Place · 01', images: ['/assets/collections/bauzaun.jpg'] },
-    garten:    { title: 'Garten',                    en: 'Garden',                    eyebrow: 'Der Ort · 02', eyebrowEn: 'The Place · 02', images: pics('garten', 6) },
-    haeuschen: { title: 'Altes Häuschen',            en: 'Old cottage',               eyebrow: 'Der Ort · 03', eyebrowEn: 'The Place · 03', images: pics('haeuschen', 5) },
-    detail:    { title: 'Baustellendetails',         en: 'Construction details',      eyebrow: 'Der Ort · 04', eyebrowEn: 'The Place · 04', images: pics('detail', 7) },
-    licht:     { title: 'Licht · Staub · Holz · Erde', en: 'Light · Dust · Wood · Earth', eyebrow: 'Der Ort · 05', eyebrowEn: 'The Place · 05', images: pics('licht', 6) },
-    still:     { title: 'Stille Ortsansicht',        en: 'Quiet view of the place',   eyebrow: 'Der Ort · 06', eyebrowEn: 'The Place · 06', images: pics('still', 5) },
-    schwelle:  { title: 'Schwelle',                  en: 'Threshold',                 eyebrow: 'Der Ort · 07', eyebrowEn: 'The Place · 07', images: pics('schwelle', 5) },
+    garten:    { title: 'Garten',                    en: 'Garden',                    eyebrow: 'Der Ort · 02', eyebrowEn: 'The Place · 02', images: ['/assets/collections/in-progress.jpg'] },
+    haeuschen: { title: 'Altes Häuschen',            en: 'Old cottage',               eyebrow: 'Der Ort · 03', eyebrowEn: 'The Place · 03', images: ['/assets/collections/in-progress.jpg'] },
+    detail:    { title: 'Baustellendetails',         en: 'Construction details',      eyebrow: 'Der Ort · 04', eyebrowEn: 'The Place · 04', images: ['/assets/collections/in-progress.jpg'] },
+    licht:     { title: 'Licht · Staub · Holz · Erde', en: 'Light · Dust · Wood · Earth', eyebrow: 'Der Ort · 05', eyebrowEn: 'The Place · 05', images: ['/assets/collections/licht-schutt.jpg'] },
+    still:     { title: 'Stille Ortsansicht',        en: 'Quiet view of the place',   eyebrow: 'Der Ort · 06', eyebrowEn: 'The Place · 06', images: ['/assets/collections/still-hafen.jpg'] },
+    schwelle:  { title: 'Schwelle',                  en: 'Threshold',                 eyebrow: 'Der Ort · 07', eyebrowEn: 'The Place · 07', images: ['/assets/collections/in-progress.jpg'] },
 
-    baustelle: { title: 'Baustelle',                 en: 'Construction site',         eyebrow: 'Serie 01', eyebrowEn: 'Series 01', images: pics('s-baustelle', 8) },
+    baustelle: { title: 'Baustelle',                 en: 'Construction site',         eyebrow: 'Serie 01', eyebrowEn: 'Series 01', images: ['/assets/collections/baustelle-kinderland.jpg'] },
     lost:      { title: 'Lost Worpswede',            en: 'Lost Worpswede',            eyebrow: 'Serie 02', eyebrowEn: 'Series 02', images: ['/assets/collections/lost-rettungswege.jpg', '/assets/collections/lost-kneipe.jpg'] },
-    zaun:      { title: 'Zaungespräche',             en: 'Fence conversations',       eyebrow: 'Serie 03', eyebrowEn: 'Series 03', images: pics('s-zaun', 6) },
-    traeger:   { title: 'Trägerfiguren',             en: 'Supporting figures',        eyebrow: 'Serie 04', eyebrowEn: 'Series 04', images: pics('s-traeger', 6) },
-    pgarten:   { title: 'Paulas Garten',             en: "Paula's Garden",            eyebrow: 'Serie 05', eyebrowEn: 'Series 05', images: pics('s-pgarten', 8) },
-    jahr2030:  { title: '2030',                      en: '2030',                      eyebrow: 'Serie 06', eyebrowEn: 'Series 06', images: pics('s-2030', 6) },
-    italia:    { title: 'Preview Italia',            en: 'Preview Italia',            eyebrow: 'Serie 07', eyebrowEn: 'Series 07', images: pics('s-italia', 7) }
+    zaun:      { title: 'Zaungespräche',             en: 'Fence conversations',       eyebrow: 'Serie 03', eyebrowEn: 'Series 03', images: ['/assets/collections/in-progress.jpg'] },
+    traeger:   { title: 'Trägerfiguren',             en: 'Supporting figures',        eyebrow: 'Serie 04', eyebrowEn: 'Series 04', images: ['/assets/collections/in-progress.jpg'] },
+    pgarten:   { title: 'Paulas Garten',             en: "Paula's Garden",            eyebrow: 'Serie 05', eyebrowEn: 'Series 05', images: ['/assets/collections/in-progress.jpg'] },
+    jahr2030:  { title: '2030',                      en: '2030',                      eyebrow: 'Serie 06', eyebrowEn: 'Series 06', images: ['/assets/collections/in-progress.jpg'] },
+    italia:    { title: 'Preview Italia',            en: 'Preview Italia',            eyebrow: 'Serie 07', eyebrowEn: 'Series 07', images: ['/assets/collections/in-progress.jpg'] }
   };
 
   function colTitle(col) { return (LANG === 'en' && col.en) ? col.en : col.title; }
