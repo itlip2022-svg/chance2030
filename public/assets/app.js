@@ -86,7 +86,7 @@
     schwelle:  { title: 'Schwelle',                  en: 'Threshold',                 eyebrow: 'Der Ort · 07', eyebrowEn: 'The Place · 07', images: pics('schwelle', 5) },
 
     baustelle: { title: 'Baustelle',                 en: 'Construction site',         eyebrow: 'Serie 01', eyebrowEn: 'Series 01', images: pics('s-baustelle', 8) },
-    lost:      { title: 'Lost Worpswede',            en: 'Lost Worpswede',            eyebrow: 'Serie 02', eyebrowEn: 'Series 02', images: pics('s-lost', 7) },
+    lost:      { title: 'Lost Worpswede',            en: 'Lost Worpswede',            eyebrow: 'Serie 02', eyebrowEn: 'Series 02', images: ['/assets/collections/lost-rettungswege.jpg', '/assets/collections/lost-kneipe.jpg'] },
     zaun:      { title: 'Zaungespräche',             en: 'Fence conversations',       eyebrow: 'Serie 03', eyebrowEn: 'Series 03', images: pics('s-zaun', 6) },
     traeger:   { title: 'Trägerfiguren',             en: 'Supporting figures',        eyebrow: 'Serie 04', eyebrowEn: 'Series 04', images: pics('s-traeger', 6) },
     pgarten:   { title: 'Paulas Garten',             en: "Paula's Garden",            eyebrow: 'Serie 05', eyebrowEn: 'Series 05', images: pics('s-pgarten', 8) },
@@ -96,6 +96,9 @@
 
   function colTitle(col) { return (LANG === 'en' && col.en) ? col.en : col.title; }
   function colEyebrow(col) { return (LANG === 'en' && col.eyebrowEn) ? col.eyebrowEn : col.eyebrow; }
+  // Real photographs (served from /assets/) keep their colour; picsum
+  // placeholders stay grayscale to match the gallery look.
+  function isColorImage(src) { return /^\/assets\//.test(src); }
 
   // ---- fill slot thumbnails ------------------------------------------------
   document.querySelectorAll('.slot[data-collection]').forEach(function (slot) {
@@ -129,6 +132,7 @@
     var imgs = current.images;
     index = (i + imgs.length) % imgs.length;
     lxImg.src = imgs[index];
+    lxImg.classList.toggle('color', isColorImage(imgs[index]));
     lxImg.alt = colTitle(current) + ' — ' + (LANG === 'en' ? 'image ' : 'Bild ') + (index + 1);
     lxCap.textContent = colTitle(current);
     lxCount.textContent = (index + 1) + ' / ' + imgs.length;

@@ -395,6 +395,9 @@ section.block{padding-top:clamp(4.5rem,11vh,9rem);padding-bottom:clamp(4.5rem,11
 .slot-cue::before{content:"◷";font-size:.9em;}
 /* mouseover highlight */
 .slot:hover img,.slot:focus-visible img{transform:scale(1.05);filter:grayscale(0) contrast(1.04);}
+/* The enlarged original in the lightbox shows in full colour; the gallery
+   tiles stay grayscale and reveal colour on hover like every other tile. */
+.lx-stage img.color{filter:none;}
 .slot:hover .slot-hint,.slot:focus-visible .slot-hint{opacity:1;}
 .slot:hover::after,.slot:focus-visible::after{border-color:var(--ink);box-shadow:0 0 0 2px rgba(13,13,13,.06);}
 .slot:focus-visible{outline:2px solid var(--ink);outline-offset:3px;}
