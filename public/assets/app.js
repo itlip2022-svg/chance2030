@@ -72,23 +72,30 @@
     return out;
   }
 
-  var COLLECTIONS = {
-    bauzaun:   { title: 'Bauzaun',                   eyebrow: 'Der Ort · 01', images: pics('bauzaun', 6) },
-    garten:    { title: 'Garten',                    eyebrow: 'Der Ort · 02', images: pics('garten', 6) },
-    haeuschen: { title: 'Altes Häuschen',            eyebrow: 'Der Ort · 03', images: pics('haeuschen', 5) },
-    detail:    { title: 'Baustellendetails',         eyebrow: 'Der Ort · 04', images: pics('detail', 7) },
-    licht:     { title: 'Licht · Staub · Holz · Erde', eyebrow: 'Der Ort · 05', images: pics('licht', 6) },
-    still:     { title: 'Stille Ortsansicht',        eyebrow: 'Der Ort · 06', images: pics('still', 5) },
-    schwelle:  { title: 'Schwelle',                  eyebrow: 'Der Ort · 07', images: pics('schwelle', 5) },
+  // Language is taken from <html lang>. EN labels fall back to DE when missing.
+  var LANG = (document.documentElement.lang || 'de').toLowerCase().indexOf('en') === 0 ? 'en' : 'de';
+  var COUNT_WORD = LANG === 'en' ? 'images' : 'Bilder';
 
-    baustelle: { title: 'Baustelle',                 eyebrow: 'Serie 01', images: pics('s-baustelle', 8) },
-    lost:      { title: 'Lost Worpswede',            eyebrow: 'Serie 02', images: pics('s-lost', 7) },
-    zaun:      { title: 'Zaungespräche',             eyebrow: 'Serie 03', images: pics('s-zaun', 6) },
-    traeger:   { title: 'Trägerfiguren',             eyebrow: 'Serie 04', images: pics('s-traeger', 6) },
-    pgarten:   { title: 'Paulas Garten',             eyebrow: 'Serie 05', images: pics('s-pgarten', 8) },
-    jahr2030:  { title: '2030',                      eyebrow: 'Serie 06', images: pics('s-2030', 6) },
-    italia:    { title: 'Preview Italia',            eyebrow: 'Serie 07', images: pics('s-italia', 7) }
+  var COLLECTIONS = {
+    bauzaun:   { title: 'Bauzaun',                   en: 'Construction fence',        eyebrow: 'Der Ort · 01', eyebrowEn: 'The Place · 01', images: pics('bauzaun', 6) },
+    garten:    { title: 'Garten',                    en: 'Garden',                    eyebrow: 'Der Ort · 02', eyebrowEn: 'The Place · 02', images: pics('garten', 6) },
+    haeuschen: { title: 'Altes Häuschen',            en: 'Old cottage',               eyebrow: 'Der Ort · 03', eyebrowEn: 'The Place · 03', images: pics('haeuschen', 5) },
+    detail:    { title: 'Baustellendetails',         en: 'Construction details',      eyebrow: 'Der Ort · 04', eyebrowEn: 'The Place · 04', images: pics('detail', 7) },
+    licht:     { title: 'Licht · Staub · Holz · Erde', en: 'Light · Dust · Wood · Earth', eyebrow: 'Der Ort · 05', eyebrowEn: 'The Place · 05', images: pics('licht', 6) },
+    still:     { title: 'Stille Ortsansicht',        en: 'Quiet view of the place',   eyebrow: 'Der Ort · 06', eyebrowEn: 'The Place · 06', images: pics('still', 5) },
+    schwelle:  { title: 'Schwelle',                  en: 'Threshold',                 eyebrow: 'Der Ort · 07', eyebrowEn: 'The Place · 07', images: pics('schwelle', 5) },
+
+    baustelle: { title: 'Baustelle',                 en: 'Construction site',         eyebrow: 'Serie 01', eyebrowEn: 'Series 01', images: pics('s-baustelle', 8) },
+    lost:      { title: 'Lost Worpswede',            en: 'Lost Worpswede',            eyebrow: 'Serie 02', eyebrowEn: 'Series 02', images: pics('s-lost', 7) },
+    zaun:      { title: 'Zaungespräche',             en: 'Fence conversations',       eyebrow: 'Serie 03', eyebrowEn: 'Series 03', images: pics('s-zaun', 6) },
+    traeger:   { title: 'Trägerfiguren',             en: 'Supporting figures',        eyebrow: 'Serie 04', eyebrowEn: 'Series 04', images: pics('s-traeger', 6) },
+    pgarten:   { title: 'Paulas Garten',             en: "Paula's Garden",            eyebrow: 'Serie 05', eyebrowEn: 'Series 05', images: pics('s-pgarten', 8) },
+    jahr2030:  { title: '2030',                      en: '2030',                      eyebrow: 'Serie 06', eyebrowEn: 'Series 06', images: pics('s-2030', 6) },
+    italia:    { title: 'Preview Italia',            en: 'Preview Italia',            eyebrow: 'Serie 07', eyebrowEn: 'Series 07', images: pics('s-italia', 7) }
   };
+
+  function colTitle(col) { return (LANG === 'en' && col.en) ? col.en : col.title; }
+  function colEyebrow(col) { return (LANG === 'en' && col.eyebrowEn) ? col.eyebrowEn : col.eyebrow; }
 
   // ---- fill slot thumbnails ------------------------------------------------
   document.querySelectorAll('.slot[data-collection]').forEach(function (slot) {
@@ -97,7 +104,7 @@
     var img = slot.querySelector('img');
     if (img && !img.getAttribute('src')) img.src = col.images[0];
     var count = slot.querySelector('.slot-count');
-    if (count) count.textContent = col.images.length + ' Bilder';
+    if (count) count.textContent = col.images.length + ' ' + COUNT_WORD;
   });
 
   // ---- collection lightbox -------------------------------------------------
@@ -122,8 +129,8 @@
     var imgs = current.images;
     index = (i + imgs.length) % imgs.length;
     lxImg.src = imgs[index];
-    lxImg.alt = current.title + ' — Bild ' + (index + 1);
-    lxCap.textContent = current.title;
+    lxImg.alt = colTitle(current) + ' — ' + (LANG === 'en' ? 'image ' : 'Bild ') + (index + 1);
+    lxCap.textContent = colTitle(current);
     lxCount.textContent = (index + 1) + ' / ' + imgs.length;
     Array.prototype.forEach.call(lxStrip.children, function (t, idx) {
       t.classList.toggle('active', idx === index);
@@ -157,8 +164,8 @@
     current = COLLECTIONS[key];
     if (!current) return;
     lastFocus = document.activeElement;
-    lxTitle.textContent = current.title;
-    lxEyebrow.textContent = current.eyebrow || 'Collection';
+    lxTitle.textContent = colTitle(current);
+    lxEyebrow.textContent = colEyebrow(current) || 'Collection';
     buildStrip();
     show(startIndex || 0);
     lb.classList.add('open');

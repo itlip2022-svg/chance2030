@@ -28,6 +28,11 @@ app.get('/impressum', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'impressum.html'));
 });
 
+// English landing page.
+app.get('/en', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'index.en.html'));
+});
+
 // Landing page.
 app.get('/', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'index.html'));
