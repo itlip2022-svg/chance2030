@@ -67,12 +67,12 @@
 
   var COLLECTIONS = {
     bauzaun:   { title: 'Bauzaun',                   en: 'Construction fence',        eyebrow: 'Der Ort · 01', eyebrowEn: 'The Place · 01', images: ['/assets/collections/bauzaun.jpg'] },
-    garten:    { title: 'Garten',                    en: 'Garden',                    eyebrow: 'Der Ort · 02', eyebrowEn: 'The Place · 02', images: ['/assets/collections/in-progress.jpg'] },
-    haeuschen: { title: 'Altes Häuschen',            en: 'Old cottage',               eyebrow: 'Der Ort · 03', eyebrowEn: 'The Place · 03', images: ['/assets/collections/in-progress.jpg'] },
-    detail:    { title: 'Baustellendetails',         en: 'Construction details',      eyebrow: 'Der Ort · 04', eyebrowEn: 'The Place · 04', images: ['/assets/collections/in-progress.jpg'] },
+    garten:    { title: 'Garten',                    en: 'Garden',                    eyebrow: 'Der Ort · 02', eyebrowEn: 'The Place · 02', images: ['/assets/collections/garten.jpg'] },
+    haeuschen: { title: 'Altes Häuschen',            en: 'Old cottage',               eyebrow: 'Der Ort · 03', eyebrowEn: 'The Place · 03', images: ['/assets/collections/haeuschen-tuer.jpg'] },
+    detail:    { title: 'Baustellendetails',         en: 'Construction details',      eyebrow: 'Der Ort · 04', eyebrowEn: 'The Place · 04', images: ['/assets/collections/detail-stuele.jpg'] },
     licht:     { title: 'Licht · Staub · Holz · Erde', en: 'Light · Dust · Wood · Earth', eyebrow: 'Der Ort · 05', eyebrowEn: 'The Place · 05', images: ['/assets/collections/licht-schutt.jpg'] },
     still:     { title: 'Stille Ortsansicht',        en: 'Quiet view of the place',   eyebrow: 'Der Ort · 06', eyebrowEn: 'The Place · 06', images: ['/assets/collections/still-hafen.jpg'] },
-    schwelle:  { title: 'Schwelle',                  en: 'Threshold',                 eyebrow: 'Der Ort · 07', eyebrowEn: 'The Place · 07', images: ['/assets/collections/in-progress.jpg'] },
+    schwelle:  { title: 'Schwelle',                  en: 'Threshold',                 eyebrow: 'Der Ort · 07', eyebrowEn: 'The Place · 07', images: ['/assets/collections/schwelle-skulptur.jpg'] },
 
     baustelle: { title: 'Baustelle',                 en: 'Construction site',         eyebrow: 'Serie 01', eyebrowEn: 'Series 01', images: ['/assets/collections/baustelle-kinderland.jpg'] },
     lost:      { title: 'Lost Worpswede',            en: 'Lost Worpswede',            eyebrow: 'Serie 02', eyebrowEn: 'Series 02', images: ['/assets/collections/lost-rettungswege.jpg', '/assets/collections/lost-kneipe.jpg'] },
