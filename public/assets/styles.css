@@ -295,6 +295,41 @@ section.block{padding-top:clamp(4.5rem,11vh,9rem);padding-bottom:clamp(4.5rem,11
   letter-spacing:-.01em;
 }
 
+.song-embed-wrap{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:clamp(1rem,3vw,2rem);
+  flex-wrap:wrap;
+}
+.song-embed{
+  width:100%;
+  max-width:760px;
+  flex:1 1 480px;
+  height:240px;
+  border:1px solid var(--line);
+  filter:grayscale(1) contrast(1.02);
+}
+.song-embed-wrap a{
+  flex:0 0 auto;
+  display:inline-flex;
+  line-height:0;
+}
+.song-art{
+  display:block;
+  width:240px;
+  height:240px;
+  object-fit:cover;
+  border:1px solid var(--line);
+  filter:grayscale(1) contrast(1.02);
+  transition:opacity .2s ease;
+}
+.song-embed-wrap a:hover .song-art{opacity:.85;}
+@media (max-width:860px){
+  .song-embed-wrap a{flex:1 1 100%;}
+  .song-art{width:100%;height:auto;aspect-ratio:1/1;}
+}
+
 .zaun-cta{
   margin-top:clamp(2rem,5vh,3rem);
   display:flex;
