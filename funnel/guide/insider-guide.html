@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<title>Worpswede — Der Insider-Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #f6f2ea;
+    --paper-dark: #ece5d8;
+    --ink: #23271f;
+    --ink-soft: #4b5044;
+    --moss: #41503f;
+    --accent: #b4552d;
+    --gold: #c9a227;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  @page { size: 148mm 210mm; margin: 0; }
+  html, body { font-family: "Inter", sans-serif; color: var(--ink); }
+
+  .page {
+    width: 148mm;
+    height: 210mm;
+    padding: 13mm 13mm 18mm;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+    background: var(--paper);
+    counter-increment: page;
+  }
+  .page-footer {
+    position: absolute;
+    bottom: 6.5mm;
+    left: 13mm;
+    right: 13mm;
+    display: flex;
+    justify-content: space-between;
+    font-size: 7pt;
+    letter-spacing: 0.08em;
+    color: #97917f;
+    text-transform: uppercase;
+  }
+  .page-footer .no::after { content: counter(page); }
+
+  h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 500; line-height: 1.12; }
+  h2 { font-size: 21pt; margin-bottom: 4mm; letter-spacing: -0.01em; }
+  h3 { font-size: 11.5pt; color: var(--moss); margin: 4mm 0 1.2mm; }
+  p, li { font-size: 9pt; line-height: 1.55; color: var(--ink-soft); }
+  p + p { margin-top: 2.2mm; }
+  strong { color: var(--ink); }
+  ul { padding-left: 4.5mm; margin: 1.5mm 0; }
+  li { margin-bottom: 1mm; }
+  .kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 7.5pt;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 2.5mm;
+  }
+  .img-block { border-radius: 3mm; overflow: hidden; margin: 4mm 0; }
+  .img-block img { width: 100%; display: block; }
+  .img-caption { font-size: 7pt; color: #97917f; font-style: italic; margin-top: 1.2mm; text-align: center; }
+  .tip {
+    background: var(--paper-dark);
+    border-left: 1mm solid var(--accent);
+    border-radius: 0 2mm 2mm 0;
+    padding: 2.8mm 3.5mm;
+    margin: 3.5mm 0;
+  }
+  .tip p { font-size: 8.5pt; }
+  .two-col { display: flex; gap: 5mm; }
+  .two-col > div { flex: 1; min-width: 0; }
+
+  /* ---- Cover ---- */
+  .cover { padding: 0; background: var(--moss); color: #fff; }
+  .cover .cover-img { height: 118mm; overflow: hidden; }
+  .cover .cover-img img { width: 100%; height: 100%; object-fit: cover; }
+  .cover .cover-text { padding: 11mm 13mm; }
+  .cover .kicker { color: var(--gold); }
+  .cover h1 { font-size: 31pt; color: #fff; margin-bottom: 4mm; }
+  .cover p { color: rgba(255,255,255,0.85); font-size: 10pt; }
+  .cover .authors {
+    margin-top: 9mm;
+    padding-top: 4mm;
+    border-top: 0.4mm solid rgba(255,255,255,0.25);
+    font-size: 8.5pt;
+    color: rgba(255,255,255,0.75);
+  }
+
+  /* ---- Willkommen / Code-Box ---- */
+  .code-box {
+    text-align: center;
+    border: 0.6mm dashed var(--accent);
+    border-radius: 3mm;
+    padding: 4mm;
+    margin: 4.5mm 0;
+    background: #fff;
+  }
+  .code-box .code { font-family: "Fraunces", serif; font-size: 19pt; letter-spacing: 0.14em; color: var(--accent); font-weight: 600; }
+  .code-box p { font-size: 8pt; margin-top: 1.2mm; }
+  .signature { font-family: "Fraunces", serif; font-style: italic; font-size: 12pt; color: var(--ink); margin-top: 4mm; }
+
+  /* ---- TOC ---- */
+  .toc { list-style: none; padding: 0; margin-top: 5mm; }
+  .toc li {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 10pt; padding: 2.1mm 0; margin: 0;
+    border-bottom: 0.25mm solid #ddd4c2;
+  }
+  .toc .t { font-family: "Fraunces", serif; color: var(--ink); }
+  .toc .n { color: var(--accent); font-weight: 600; font-size: 9pt; }
+
+  /* ---- Saison-Grid ---- */
+  .season-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5mm; margin-top: 4mm; }
+  .season {
+    background: #fff; border-radius: 2.5mm; padding: 3.5mm;
+  }
+  .season h3 { margin-top: 0; }
+  .season p { font-size: 8.2pt; }
+
+  .checklist { list-style: none; padding: 0; }
+  .checklist li {
+    padding-left: 6mm; position: relative; margin-bottom: 2.6mm; font-size: 9pt;
+  }
+  .checklist li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+
+  .contact-card { background: #fff; border-radius: 3mm; padding: 4.5mm; margin-top: 4mm; }
+  .contact-card p { font-size: 8.5pt; }
+  a { color: var(--accent); text-decoration: none; }
+  .footnote { font-size: 6.8pt; color: #97917f; }
+</style>
+</head>
+<body>
+
+<!-- ================= 1 · COVER ================= -->
+<div class="page cover">
+  <div class="cover-img"><img src="img/Worpswede-Teufelsmoor-Landschaft-2026-04-02.jpg" alt="" /></div>
+  <div class="cover-text">
+    <p class="kicker">Der Insider-Guide Ihrer Gastgeber</p>
+    <h1>Worpswede<br />entdecken.</h1>
+    <p>Kunst, Moor und die schönsten Orte des Künstlerdorfes — zusammengestellt von zwei Künstlern, die hier leben.</p>
+    <p class="authors">Markus Lippeck &amp; Anna Schill · Im Schluh 71 · Worpswede<br />ferienwohnung-in-worpswede.de</p>
+  </div>
+</div>
+
+<!-- ================= 2 · WILLKOMMEN ================= -->
+<div class="page">
+  <p class="kicker">Moin!</p>
+  <h2>Schön, dass Sie<br />Worpswede entdecken wollen.</h2>
+  <p>Wir sind Markus und Anna — Maler, Gastgeber und seit vielen Jahren verliebt in dieses Dorf am Rand des Teufelsmoors. In unserem Haus Im Schluh vermieten wir vier Ferienwohnungen, betreiben die <strong>Galerie SCHLUH</strong> und arbeiten in unserem Atelier.</p>
+  <p>Auf den folgenden Seiten haben wir aufgeschrieben, was wir unseren Gästen sonst am Frühstückstisch oder über den Gartenzaun erzählen: wo das Licht am schönsten ist, wo man gut isst, was man auslassen kann — und was auf keinen Fall.</p>
+  <p>Nehmen Sie sich Zeit. Worpswede ist kein Ort zum Abhaken, sondern einer zum Ankommen.</p>
+  <div class="code-box">
+    <p class="kicker" style="margin-bottom:1.5mm;">Ihr Willkommensgeschenk</p>
+    <div class="code">WILLKOMMEN10</div>
+    <p>10% Rabatt auf Ihre erste Direktbuchung auf<br /><strong>ferienwohnung-in-worpswede.de</strong> — einfach bei der Buchung angeben.</p>
+  </div>
+  <p class="signature">Herzlich, Markus &amp; Anna</p>
+  <div class="page-footer"><span>Worpswede — Der Insider-Guide</span><span class="no"></span></div>
+</div>
+
+<!-- ================= 3 · INHALT ================= -->
+<div class="page">
+  <p class="kicker">Übersicht</p>
+  <h2>Inhalt</h2>
+  <ul class="toc">
+    <li><span class="t">Worpswede in fünf Minuten</span><span class="n">4</span></li>
+    <li><span class="t">Die Museen des Künstlerdorfes</span><span class="n">5</span></li>
+    <li><span class="t">Teufelsmoor, Weyerberg &amp; Hamme</span><span class="n">6</span></li>
+    <li><span class="t">Torfkahnfahrten — Worpswede vom Wasser</span><span class="n">7</span></li>
+    <li><span class="t">Das Kranich-Schauspiel</span><span class="n">8</span></li>
+    <li><span class="t">Cafés &amp; Restaurants</span><span class="n">9</span></li>
+    <li><span class="t">Mit dem Rad durchs Moor</span><span class="n">11</span></li>
+    <li><span class="t">Die schönsten Fotospots</span><span class="n">12</span></li>
+    <li><span class="t">Worpswede mit Kindern</span><span class="n">13</span></li>
+    <li><span class="t">Music Hall — Konzerte im Reetdachhaus</span><span class="n">14</span></li>
+    <li><span class="t">Mitbringsel &amp; regionale Schätze</span><span class="n">15</span></li>
+    <li><span class="t">Die beste Reisezeit</span><span class="n">16</span></li>
+    <li><span class="t">Unsere zehn Insider-Regeln</span><span class="n">17</span></li>
+    <li><span class="t">Praktisches &amp; Kontakt</span><span class="n">18</span></li>
+  </ul>
+  <div class="page-footer"><span>Worpswede — Der Insider-Guide</span><span class="no"></span></div>
+</div>
+
+<!-- ================= 4 · WORPSWEDE IN 5 MIN ================= -->
+<div class="page">
+  <p class="kicker">Zum Einstieg</p>
+  <h2>Worpswede in fünf Minuten</h2>
+  <p><strong>1889</strong> kamen drei junge Maler — Fritz Mackensen, Otto Modersohn und Hans am Ende — in dieses Bauerndorf am Teufelsmoor und blieben. Sie waren ergriffen von der kargen Weite, den dramatischen Wolkenhimmeln und dem besonderen Licht der Dämmerung. „Die Natur ist unsere Lehrerin", notierte Mackensen — und eine der berühmtesten Künstlerkolonien Europas war geboren.</p>
+  <p>Bald folgten Fritz Overbeck, der Jugendstil-Visionär <strong>Heinrich Vogeler</strong> und <strong>Paula Modersohn-Becker</strong>, heute die berühmteste Malerin des Ortes. Auch der Dichter <strong>Rainer Maria Rilke</strong> gehörte zum engsten Kreis und heiratete die Bildhauerin Clara Westhoff.</p>
+  <div class="img-block"><img src="img/Worpswede-Weyerberg-2026-04-02.jpg" alt="" style="height:52mm; object-fit:cover;" /></div>
+  <p>Und heute? Worpswede ist kein Freilichtmuseum, sondern lebendiger denn je: Rund <strong>150 Künstlerinnen, Künstler und Kunsthandwerker</strong> leben und arbeiten hier — mit Ateliers, Galerien, Werkstätten und einer erstaunlichen Kulturdichte für ein Dorf dieser Größe. Wir zwei gehören dazu.</p>
+  <div class="page-footer"><span>Worpswede — Der Insider-Guide</span><span class="no"></span></div>
+</div>
+
+<!-- ================= 5 · MUSEEN ================= -->
+<div class="page">
+  <p class="kicker">Kunst</p>
+  <h2>Die Museen des Künstlerdorfes</h2>
+  <h3>Barkenhoff — Heinrich-Vogeler-Museum</h3>
+  <p>Vogelers Wohnhaus und Atelier, vom Bauernhaus zum Jugendstil-Gesamtkunstwerk umgebaut — das berühmteste Gebäude Worpswedes und unser Pflichttipp Nummer eins. Für Kinder gibt es eine Entdeckerrallye.</p>
+  <h3>Große Kunstschau</h3>
+  <p>Bernhard Hoetgers expressionistischer Museumsbau von 1927 — schon die Architektur lohnt den Besuch. Wechselnde Ausstellungen zur Worpsweder Kunst von den Anfängen bis heute.</p>
+  <h3>Haus im Schluh</h3>
+  <p>Das Museum zu Martha Vogeler mit Textilwerkstatt und Wohnkultur — reetgedeckt, verwunschen und nur ein paar Schritte von unserer Haustür entfernt.</p>
+  <h3>Museum am Modersohn-Haus &amp; Worpsweder Kunsthalle</h3>
+  <p>Otto Modersohns Leben in authentischer Wohnatmosphäre — und in der Kunsthalle Wechselausstellungen mit Klassikern und Zeitgenossen.</p>
+  <div class="tip"><p><strong>Unser Tipp:</strong> Die Kombikarte für die Worpsweder Museen lohnt sich fast immer — und verteilen Sie die Besuche auf mehrere Tage. Kunst braucht Pausen. Aktuelle Zeiten und Preise: worpswede-museen.de</p></div>
+  <div class="page-footer"><span>Worpswede — Der Insider-Guide</span><span class="no"></span></div>
+</div>
+
+<!-- ================= 6 · TEUFELSMOOR ================= -->
+<div class="page">
+  <p class="kicker">Natur</p>
+  <h2>Teufelsmoor, Weyerberg &amp; Hamme</h2>
+  <p>Das <strong>Teufelsmoor</strong> ist der Grund, warum es Worpswede gibt: eine weite, stille Niederungslandschaft, die seit dem 18. Jahrhundert von Moorbauern kultiviert wurde und heute Heimat für Kraniche, Reiher und unzählige Wolkenstimmungen ist.</p>
+  <p>Der <strong>Weyerberg</strong> (54 m) ist der Hausberg des Dorfes — kein Gipfel, aber eine liebenswerte Anhöhe mit Blick über die Hammeniederung. In 15–20 Minuten sind Sie oben; am schönsten zu Sonnenauf- oder -untergang.</p>
+  <div class="img-block"><img src="img/Worpswede-Aussichtsturm-Neu-Helgoland-2026-04-03.jpg" alt="" style="height:54mm; object-fit:cover;" /><p class="img-caption">Die Hammeniederung bei Neu Helgoland im Morgenlicht</p></div>
+  <p>Unser Lieblingsort: der <strong>Aussichtsturm bei Neu Helgoland</strong> an der Hamme (frei zugänglich, Spende erbeten). Von oben sehen Sie das Moor, den Fluss, die Kähne — und abends einen der besten Sonnenuntergänge Norddeutschlands. Die <strong>Hammehütte</strong> nebenan versorgt Sie mit Kuchen und regionaler Küche auf der Panorama-Terrasse.</p>
+  <div class="page-footer"><span>Worpswede — Der Insider-Guide</span><span class="no"></span></div>
+</div>
+
+<!-- ================= 7 · TORFKAHN ================= -->
+<div class="page">
+  <p class="kicker">Erlebnis</p>
+  <h2>Torfkahnfahrten — Worpswede vom Wasser aus</h2>
+  <div class="img-block"><img src="img/Worpswede-Torfkahnfahrten-Hamme-2026-04-03.jpg" alt="" style="height:50mm; object-fit:cover;" /></div>
+  <p>Zwei Jahrhunderte lang waren die schwarzen Eichenkähne mit braunen Segeln die einzigen Verkehrsmittel im Moor — die Bauern schipperten ihren Torf bis nach Bremen. Heute gleiten die nachgebauten Kähne leise (meist elektrisch) über die Hamme, während der Skipper Geschichten „ut ole Tieden" erzählt.</p>
+  <p>Für uns die schönste Art, diese Landschaft zu begreifen: <strong>vom Wasser aus, im Tempo von damals.</strong></p>
+  <ul>
+    <li><strong>Saison:</strong> Mai bis Oktober, Ablegestellen u.a. Neu Helgoland</li>
+    <li><strong>Besonders schön:</strong> Abenddämmerungs-, Sonnenaufgangs- und Lampionfahrten</li>
+    <li><strong>Highlight im August:</strong> die <strong>HammeNacht</strong> — alle Kähne der Region fahren gemeinsam in den Vollmond (früh buchen: hammenacht.de)</li>
+  </ul>
+  <div class="tip"><p><strong>Buchung:</strong> z.B. Worpsweder Torfschifffahrt (worpsweder-torfschifffahrt.de) oder über die Tourist-Info, Bergstraße 13, Tel. 04792 935820.</p></div>
+  <div class="page-footer"><span>Worpswede — Der Insider-Guide</span><span class="no"></span></div>
+</div>
+
+<!-- ================= 8 · KRANICHE ================= -->
+<div class="page">
+  <p class="kicker">Naturschauspiel</p>
+  <h2>Wenn 25.000 Kraniche einfliegen</h2>
+  <div class="img-block"><img src="img/Worpswede-Kraniche-Teufelsmoor-2026-04-03.jpg" alt="" style="height:50mm; object-fit:cover;" /></div>
+  <p>Zweimal im Jahr wird das Teufelsmoor zur Bühne für eines der großartigsten Naturschauspiele Norddeutschlands: Im <strong>März/April</strong> und vor allem von <strong>September bis November</strong> rasten hier Tausende Kraniche — in Spitzenzeiten bis zu 25.000 Vögel.</p>
+  <p>Das Ritual ist immer gleich: Tagsüber fressen die „Vögel des Glücks" auf den abgeernteten Feldern, abends fliegen sie in großen, trompetenden Formationen zu ihren Schlafplätzen im Moor. Dieser <strong>abendliche Einflug</strong> — Hunderte Silhouetten vor glühendem Himmel — ist ein Gänsehautmoment, den unsere Gäste nie vergessen.</p>
+  <ul>
+    <li><strong>Bester Platz:</strong> Aussichtsturm Neu Helgoland, ca. 1–2 Stunden vor Sonnenuntergang</li>
+    <li><strong>Beste Zeit:</strong> Oktober</li>
+    <li><strong>Mitbringen:</strong> Fernglas, warme Jacke, Geduld</li>
+  </ul>
+  <div class="page-footer"><span>Worpswede — Der Insider-Guide</span><span class="no"></span></div>
+</div>
+
+<!-- ================= 9 · CAFES ================= -->
+<div class="page">
+  <p class="kicker">Genuss · I</p>
+  <h2>Cafés mit Künstlerseele</h2>
+  <div class="img-block"><img src="img/Worpswede-Cafe-Verrueckt-2026-04-02.jpg" alt="" style="height:48mm; object-fit:cover;" /><p class="img-caption">Das Kaffee Worpswede — im Volksmund „Café Verrückt"</p></div>
+  <h3>Kaffee Worpswede („Café Verrückt")</h3>
+  <p>Bernhard Hoetgers expressionistisches Café von 1927 — ein Gebäude fast ohne rechte Winkel. Auf einem Balken antwortete Hoetger den Spöttern: <em>„Wer't nicht ehrt, ist selbst verrückt."</em> Zuletzt in Sanierung — aber allein die Architektur von außen ist den Weg wert. Vorher den aktuellen Stand prüfen.</p>
+  <h3>Café Scheibner</h3>
+  <p>In der Bergstraße: Frühstück, hausgemachte Torten und wechselnde Kunstausstellungen — Kaffeehaus und Galerie in einem.</p>
+  <h3>Hammehütte Neu Helgoland</h3>
+  <p>Kuchen vom eigenen Konditor mit dem besten Terrassenblick über die Hammeniederung — perfekt nach Turm oder Torfkahn.</p>
+  <div class="page-footer"><span>Worpswede — Der Insider-Guide</span><span class="no"></span></div>
+</div>
+
+<!-- ================= 10 · RESTAURANTS ================= -->
+<div class="page">
+  <p class="kicker">Genuss · II</p>
+  <h2>Abends gut essen</h2>
+  <h3>Restaurant PAULAS</h3>
+  <p>Findorffstraße 3 — regionale, saisonale Küche mit Leichtigkeit: Fisch, Steaks und gute vegetarische Optionen. Der Name ist natürlich eine Verbeugung vor Paula Modersohn-Becker.</p>
+  <h3>Zaika — Restaurant &amp; Tapas Bar</h3>
+  <p>Findorffstraße 21: indisch-internationale Fusion — und ein originales <strong>Künstlerzimmer von Heinrich Vogeler</strong>. Wo sonst gibt es Curry im Jugendstil?</p>
+  <h3>Restaurant im Alten Bahnhof</h3>
+  <p>Moderne Küche im Jugendstil-Bahnhofsgebäude, das Heinrich Vogeler gestaltet hat — Ankommen wie vor hundert Jahren.</p>
+  <h3>Zum Hemberg &amp; Pella</h3>
+  <p>Kreativ-bodenständige Küche am Hemberg — und griechisch-mediterranes Flair mit Tavernen-Abenden bei Pella.</p>
+  <div class="tip"><p><strong>Insider-Regel:</strong> Sonntagmittag in der Saison wird es überall voll — reservieren Sie, oder essen Sie einfach dienstags bis donnerstags. Dann gehört das Dorf fast Ihnen.</p></div>
+  <div class="page-footer"><span>Worpswede — Der Insider-Guide</span><span class="no"></span></div>
+</div>
+
+<!-- ================= 11 · RAD ================= -->
+<div class="page">
+  <p class="kicker">Aktiv</p>
+  <h2>Mit dem Rad durchs Moor</h2>
+  <div class="img-block"><img src="img/Worpswede-E-Bike-Tour-Teufelsmoor-2026-04-02.jpg" alt="" style="height:48mm; object-fit:cover;" /></div>
+  <p>Flaches Land, stille Feldwege, Birkenalleen und alle paar Kilometer eine Einkehr: Das Teufelsmoor ist wie gemacht fürs Fahrrad. Die schönsten Wege sind nie die Hauptstraßen — sondern die Wirtschaftswege zwischen den Dörfern, wo Sie nur Wind und Gänse hören.</p>
+  <h3>Unsere zwei Lieblingsrunden</h3>
+  <ul>
+    <li><strong>Die Klassische (15–20 km):</strong> Ortskern → Weyerberg → Birkenallee → Rüting und zurück. Flach, familientauglich, 1,5–2 Stunden mit Pausen.</li>
+    <li><strong>Die Moor-Runde (25–30 km):</strong> Worpswede → Hammeniederung → Aussichtsturm Neu Helgoland → zurück. Für Naturfreunde und Fotografen.</li>
+  </ul>
+  <div class="tip"><p><strong>Kein Rad dabei?</strong> Fahrradladen Eyl, Findorffstraße 28 (Tel. 04792 2323) — City- und E-Bikes, Kinderräder, Anhänger. E-Bikes am besten reservieren, besonders am Wochenende.</p></div>
+  <div class="page-footer"><span>Worpswede — Der Insider-Guide</span><span class="no"></span></div>
+</div>
+
+<!-- ================= 12 · FOTOSPOTS ================= -->
+<div class="page">
+  <p class="kicker">Für die Kamera</p>
+  <h2>Die schönsten Fotospots</h2>
+  <div class="img-block"><img src="img/Worpswede-Birkenallee-Teufelsmoor-2026-04-02.jpg" alt="" style="height:48mm; object-fit:cover;" /><p class="img-caption">Die Birkenallee — das Signature-Motiv Worpswedes</p></div>
+  <ul>
+    <li><strong>Birkenallee</strong> (Bergstraße): das berühmteste Motiv des Dorfes. Insider-Fenster: vor 8 Uhr morgens, wenn Nebel zwischen den Stämmen hängt und noch keine Autos fahren. Golden im Oktober.</li>
+    <li><strong>Weyerberg-Gipfel:</strong> Sonnenaufgang über dem Moor Richtung Osten, Abendrot über den Dorfdächern Richtung Westen.</li>
+    <li><strong>Aussichtsturm Neu Helgoland:</strong> Moor-Panorama, Spiegelungen in den Kanälen, Kraniche im Herbst — Teleobjektiv lohnt.</li>
+    <li><strong>Hamme-Ufer:</strong> Torfkähne an den Landungsstellen, Morgennebel überm Wasser, Spiegelungen zur blauen Stunde.</li>
+    <li><strong>Kaffee Verrückt:</strong> expressionistische Linien und Farben — eines der fotogensten Gebäude Norddeutschlands.</li>
+  </ul>
+  <div class="tip"><p><strong>Die goldene Regel der Moorkünstler gilt auch fürs Handy:</strong> Das beste Licht gibt es hier morgens und zur Dämmerung — genau deshalb kamen 1889 die Maler.</p></div>
+  <div class="page-footer"><span>Worpswede — Der Insider-Guide</span><span class="no"></span></div>
+</div>
+
+<!-- ================= 13 · KINDER ================= -->
+<div class="page">
+  <p class="kicker">Familie</p>
+  <h2>Worpswede mit Kindern</h2>
+  <div class="img-block"><img src="img/Worpswede-mit-Kindern-Familie-Torfkahn-2026-04-03.jpg" alt="" style="height:50mm; object-fit:cover;" /></div>
+  <ul>
+    <li><strong>Torfkahnfahrt — der Kinderhit:</strong> Fahrt auf einem „echten" historischen Schiff, Enten und Reiher zählen, manchmal darf sogar kurz gesteuert werden.</li>
+    <li><strong>Barkenhoff-Entdeckerrallye:</strong> Mit dem Quizbogen erkunden Kinder das Vogeler-Haus auf eigene Faust — und Kinder &amp; Jugendliche haben freien Eintritt.</li>
+    <li><strong>Moor-Expedition:</strong> Moorlehrpfad mit Infotafeln, Frösche, Libellen und mit Glück ein Seeadler.</li>
+    <li><strong>Spielplatz</strong> im Ortskern bei der Zionskirche — für die Pause zwischendurch.</li>
+    <li><strong>Kranich-Abend im Herbst:</strong> Der Einflug Tausender Vögel beeindruckt Kinder mindestens so sehr wie Erwachsene.</li>
+  </ul>
+  <div class="tip"><p><strong>Und bei Regen?</strong> Museen mit Rallye, Malkurse für Kinder (Barkenhoff), Kuchen essen — oder Gummistiefel an: Das Moor ist bei Nieselwetter am stimmungsvollsten.</p></div>
+  <div class="page-footer"><span>Worpswede — Der Insider-Guide</span><span class="no"></span></div>
+</div>
+
+<!-- ================= 14 · MUSIC HALL ================= -->
+<div class="page">
+  <p class="kicker">Abendprogramm</p>
+  <h2>Music Hall — Weltstars im Reetdachhaus</h2>
+  <div class="img-block"><img src="img/Worpswede-Music-Hall-2026-04-04.jpg" alt="" style="height:50mm; object-fit:cover;" /></div>
+  <p>In der Findorffstraße 21 steht eine der ungewöhnlichsten Kultureinrichtungen Norddeutschlands: Im historischen Dorfsaal eines reetgedeckten Hauses aus dem 18. Jahrhundert veranstaltet ein <strong>ehrenamtlicher Verein</strong> seit 1994 rund <strong>60–70 Konzerte im Jahr</strong> — Jazz, Blues, Rock, Chanson, Kabarett.</p>
+  <p>Auf dieser kleinen Bühne standen schon John Mayall, Eric Burdon, The Temptations und Maceo Parker. Ein Konzertabend hier gehört zu den schönsten Überraschungen, die Worpswede zu bieten hat.</p>
+  <div class="tip"><p><strong>Praktisch für unsere Gäste:</strong> Unsere Wohnung „Atelier von :D@NNY" liegt in unmittelbarer Nähe zur Music Hall — Konzert und Bett trennen nur ein paar Schritte. Programm: musichall-worpswede.de</p></div>
+  <div class="page-footer"><span>Worpswede — Der Insider-Guide</span><span class="no"></span></div>
+</div>
+
+<!-- ================= 15 · MITBRINGSEL ================= -->
+<div class="page">
+  <p class="kicker">Zum Mitnehmen</p>
+  <h2>Mitbringsel &amp; regionale Schätze</h2>
+  <div class="img-block"><img src="img/Worpswede-Lokale-Spezialitaeten-2026-04-03.jpg" alt="" style="height:48mm; object-fit:cover;" /></div>
+  <ul>
+    <li><strong>Worpsweder Bonschen:</strong> handgemachte Bonbons aus der örtlichen Manufaktur, viele Sorten vegan, im Wiederverwendungs-Glas — das perfekte kleine Geschenk.</li>
+    <li><strong>Moorhonig:</strong> Heide- und Wildblumenhonig von regionalen Imkern — ab Hof, auf dem Wochenmarkt oder im Bioladen. Jedes Glas schmeckt nach Teufelsmoor.</li>
+    <li><strong>Teufelsmalt:</strong> der Spirituosen-Laden mit Whisky, Gin und Regionalem — der Name sagt alles.</li>
+    <li><strong>Kunst &amp; Kunsthandwerk:</strong> Keramik, Schmuck, Grafik aus den Werkstätten des Dorfes — und natürlich Originale aus den Galerien. In der <strong>Galerie SCHLUH</strong> bei uns im Haus zeigen wir eigene Arbeiten.</li>
+  </ul>
+  <div class="tip"><p><strong>Grundsatz:</strong> Direkt bei Erzeugern und in Hofläden kaufen — bessere Qualität als im Souvenirregal, und das Geld bleibt im Dorf.</p></div>
+  <div class="page-footer"><span>Worpswede — Der Insider-Guide</span><span class="no"></span></div>
+</div>
+
+<!-- ================= 16 · REISEZEIT ================= -->
+<div class="page">
+  <p class="kicker">Planung</p>
+  <h2>Die beste Reisezeit</h2>
+  <p>Ehrliche Antwort: Es gibt keine schlechte. Aber jede Jahreszeit hat ihr eigenes Worpswede.</p>
+  <div class="season-grid">
+    <div class="season"><h3>Frühling</h3><p>Frisches Birkengrün, Kranichzug im März/April, perfektes Fotolicht — und Ruhe vor dem Sommertrubel.</p></div>
+    <div class="season"><h3>Sommer</h3><p>Hochsaison: Offene Ateliers im Juli, Torfkahnfahrten, Terrassenabende, hell bis 22 Uhr. Früh buchen — und Mückenschutz einpacken.</p></div>
+    <div class="season"><h3>Herbst</h3><p>Unsere Geheimtipp-Saison: goldene Birken, Morgennebel, bis zu 25.000 Kraniche — und leere Museen. Bestes Licht des Jahres.</p></div>
+    <div class="season"><h3>Winter</h3><p>Raureif, Stille und Kunst ohne Gedränge. Das Moor in Schwarz-Weiß — plus Kunsthandwerkermarkt in der Adventszeit.</p></div>
+  </div>
+  <div class="img-block" style="margin-top:4mm;"><img src="img/Worpswede-Herbst-Goldene-Jahreszeit-2026-04-03.jpg" alt="" style="height:42mm; object-fit:cover;" /></div>
+  <div class="page-footer"><span>Worpswede — Der Insider-Guide</span><span class="no"></span></div>
+</div>
+
+<!-- ================= 17 · INSIDER-REGELN ================= -->
+<div class="page">
+  <p class="kicker">Kompakt</p>
+  <h2>Unsere zehn Insider-Regeln</h2>
+  <ul class="checklist">
+    <li><strong>Zwei, besser drei Tage einplanen.</strong> Worpswede an einem Tag „abzuhaken" ist der häufigste Fehler.</li>
+    <li><strong>Vor 10 Uhr ankommen</strong> — oder nach 16 Uhr. Dazwischen ist Parkplatzsuche.</li>
+    <li><strong>Parkplatz Bahnhof nutzen:</strong> kostenlos, ohne Zeitlimit, 10 Minuten Fußweg. (Im Zentrum: Parkscheibe nicht vergessen!)</li>
+    <li><strong>Birkenallee morgens vor 8 Uhr</strong> — dann gehört sie Ihnen.</li>
+    <li><strong>Museums-Kombikarte kaufen</strong> und die Besuche verteilen.</li>
+    <li><strong>Restaurants sonntags reservieren</strong> — oder Di–Do genießen.</li>
+    <li><strong>Juni bis September: Mückenschutz.</strong> Das Moor lebt — auch das gehört dazu.</li>
+    <li><strong>Abends zum Turm Neu Helgoland</strong> — Sonnenuntergang, im Herbst mit Kranich-Kino.</li>
+    <li><strong>Nur markierte Moorwege gehen</strong> und Karten-App mitnehmen — das Moor ist weiter, als es aussieht.</li>
+    <li><strong>Kein Wettlauf:</strong> Worpswede belohnt Langsamkeit. Die Maler wussten das schon 1889.</li>
+  </ul>
+  <div class="page-footer"><span>Worpswede — Der Insider-Guide</span><span class="no"></span></div>
+</div>
+
+<!-- ================= 18 · PRAKTISCHES + KONTAKT ================= -->
+<div class="page">
+  <p class="kicker">Gut zu wissen</p>
+  <h2>Praktisches &amp; Kontakt</h2>
+  <h3>Anreise</h3>
+  <p><strong>Von Bremen:</strong> 30 km, ca. 35–45 Min. — A27 bis Abfahrt Lilienthal oder Bremen-Nord, dann ausgeschildert. <strong>Von Hamburg:</strong> ca. 1,5–2 Std. über die A1. Öffentlich: Bahn/Bus über Bremen oder Osterholz-Scharmbeck.</p>
+  <h3>Parken</h3>
+  <p><strong>P Bergstraße</strong> (hinter der Tourist-Info): kostenlos, 4 Std. mit Parkscheibe. <strong>P Bahnhof</strong> (Bahnhofstraße 17): kostenlos, ohne Limit. Als unsere Gäste parken Sie natürlich direkt bei uns vor der Tür.</p>
+  <h3>Tourist-Information</h3>
+  <p>Bergstraße 13 · Tel. 04792 935820 · worpswede-touristik.de</p>
+  <div class="contact-card">
+    <p class="kicker" style="margin-bottom:2mm;">Ihre Gastgeber</p>
+    <p><strong>Markus Lippeck &amp; Anna Schill</strong><br />
+    Ferienwohnungen Worpswede · Galerie SCHLUH · Im Schluh 71, 27721 Worpswede<br />
+    Tel. 0162 641 26 32 · markus@lippeck.de<br />
+    <a href="https://ferienwohnung-in-worpswede.de">ferienwohnung-in-worpswede.de</a> · <a href="https://www.mas.art">mas.art</a></p>
+    <p style="margin-top:2.5mm;"><strong>Ihr Code für 10% Direktbucher-Rabatt: WILLKOMMEN10</strong></p>
+  </div>
+  <p class="footnote" style="margin-top:4mm;">Alle Angaben nach bestem Wissen, ohne Gewähr — Öffnungszeiten und Preise bitte aktuell prüfen. Illustrationen: computergeneriert, inspiriert von der Malerei der Worpsweder Künstlerkolonie. © Markus Lippeck &amp; Anna Schill, Worpswede.</p>
+  <div class="page-footer"><span>Worpswede — Der Insider-Guide</span><span class="no"></span></div>
+</div>
+
+</body>
+</html>
