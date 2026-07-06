@@ -324,6 +324,62 @@ section { padding: clamp(3.5rem, 8vw, 6.5rem) clamp(1.25rem, 5vw, 4rem); }
 .price strong { font-size: 1.15rem; color: var(--ink); font-family: var(--font-display); }
 .apartments-all { text-align: center; margin-top: 2.6rem; }
 
+/* ============ Buchungs-Widget (Lodgify) ============ */
+:root {
+  --ldg-bnb-background: #ffffff;
+  --ldg-bnb-border-radius: 14px;
+  --ldg-bnb-box-shadow: 0 10px 30px rgba(35, 39, 31, 0.12);
+  --ldg-bnb-padding: 18px;
+  --ldg-bnb-input-background: #ffffff;
+  --ldg-bnb-button-border-radius: 999px;
+  --ldg-bnb-color-primary: #b4552d;
+  --ldg-bnb-color-primary-lighter: #e9c9b8;
+  --ldg-bnb-color-primary-darker: #96431f;
+  --ldg-bnb-color-primary-contrast: #ffffff;
+  --ldg-component-calendar-cell-selection-bg-color: #b4552d;
+  --ldg-component-calendar-cell-selection-color: #ffffff;
+  --ldg-component-calendar-cell-selected-bg-color: #e9c9b8;
+  --ldg-component-calendar-cell-selected-color: #333333;
+  --ldg-bnb-font-family: inherit;
+}
+.booking-widget { max-width: 520px; margin: 0 auto; }
+.booking-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.4rem;
+}
+.booking-tab {
+  border: none;
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px rgba(65, 80, 63, 0.4);
+  color: var(--moss);
+  border-radius: 999px;
+  padding: 0.5rem 1.05rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.booking-tab:hover { background: rgba(65, 80, 63, 0.08); }
+.booking-tab.active {
+  background: var(--moss);
+  color: #fff;
+  box-shadow: none;
+}
+.booking-panel { display: none; }
+.booking-panel.active { display: block; }
+#lodgify-book-now-box { width: 100%; }
+.booking-hint {
+  text-align: center;
+  margin-top: 1.3rem;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+.booking-hint a { color: var(--accent); font-weight: 600; }
+
 /* ============ Goody / Formular ============ */
 .goody {
   background: var(--moss);

@@ -100,6 +100,20 @@
     });
   });
 
+  /* ---------- Buchungs-Widget: Wohnungs-Umschalter ---------- */
+  var bookingTabs = document.querySelectorAll(".booking-tab");
+  bookingTabs.forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      bookingTabs.forEach(function (t) {
+        t.classList.toggle("active", t === tab);
+        t.setAttribute("aria-selected", t === tab ? "true" : "false");
+      });
+      document.querySelectorAll(".booking-panel").forEach(function (p) {
+        p.classList.toggle("active", p.id === tab.dataset.panel);
+      });
+    });
+  });
+
   /* ---------- Exit-Intent-Modal ---------- */
   var modal = document.getElementById("exit-modal");
   var modalForm = document.getElementById("modal-form");
