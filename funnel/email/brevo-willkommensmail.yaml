@@ -580,7 +580,101 @@ body:
                       text-valign: top
                       valign: top
                       width: 100%
-                  content: '<p><strong>Ihr Insider-Guide ist da! 📖</strong></p><p>Auf 18 Seiten haben wir aufgeschrieben, was wir unseren Gästen sonst am Frühstückstisch erzählen: Museen, Torfkahnfahrten, das Kranich-Schauspiel, unsere Lieblingscafés, Fotospots und zehn Insider-Regeln für einen entspannten Besuch.</p><p style="text-align:center;"><a href="https://entdecken.ferienwohnung-in-worpswede.de/downloads/worpswede-insider-guide.pdf" target="_blank"><strong>→ Worpswede-Insider-Guide herunterladen (PDF)</strong></a></p><p>Dazu schicken wir Ihnen gelegentlich weitere Lieblingsorte, freie Last-Minute-Termine und Neues aus dem Atelier — kein Spam, versprochen.</p><p>Wenn Sie Fragen haben: Antworten Sie einfach auf diese E-Mail, wir lesen persönlich.</p><p>Herzliche Grüße aus Worpswede<br><strong>Markus Lippeck &amp; Anna Schill</strong></p>'
+                  content: '<p><strong>Ihr Insider-Guide ist da! 📖</strong></p><p>Auf 18 Seiten haben wir aufgeschrieben, was wir unseren Gästen sonst am Frühstückstisch erzählen: Museen, Torfkahnfahrten, das Kranich-Schauspiel, unsere Lieblingscafés, Fotospots und zehn Insider-Regeln für einen entspannten Besuch.</p>'
+                -
+                  customBlockId: null
+                  id: 3f8a1c52-9d47-4b2e-8c60-7e5d21fa94b3
+                  isCustomBlock: null
+                  moduleName: null
+                  sidebarSection: null
+                  sync-module-id: null
+                  thumbnail: /assets/img/editor/element_image.svg
+                  title: 'Guide Cover'
+                  type: image
+                  layout:
+                    320px:
+                      max-width: 320px
+                      width: 100%
+                    default:
+                      align: center
+                      background-position: center
+                      background-repeat: no-repeat
+                      background-size: auto
+                      border-radius: 8px
+                      canvas-height: 340px
+                      color: '#23271f'
+                      dynamic: false
+                      embed: false
+                      font-family: Arial
+                      font-size: 16px
+                      img-border-radius: 8px
+                      imgSize: '77351'
+                      padding-bottom: 10px
+                      padding-top: 20px
+                      valign: top
+                      width: 40%
+                  content:
+                    src: 'https://entdecken.ferienwohnung-in-worpswede.de/downloads/worpswede-insider-guide-cover.jpg'
+                    href: 'https://entdecken.ferienwohnung-in-worpswede.de/downloads/worpswede-insider-guide.pdf'
+                -
+                  customBlockId: null
+                  id: 7b2e94d0-56c8-4f1a-b3e7-018f4ca6d259
+                  isCustomBlock: null
+                  moduleName: null
+                  sidebarSection: null
+                  sync-module-id: null
+                  text: '<p><span style="font-family:Arial, helvetica, sans-serif;">Insider-Guide herunterladen</span></p>'
+                  thumbnail: /assets/img/editor/element_button.svg
+                  title: 'Bouton Guide'
+                  type: text-button
+                  layout:
+                    320px:
+                      width: 100%
+                    default:
+                      align: center
+                      background-color: '#41503f'
+                      border-radius: 24px
+                      data-placeholder-href: 'https://entdecken.ferienwohnung-in-worpswede.de/downloads/worpswede-insider-guide.pdf'
+                      item-height: 42px
+                      margin-bottom: 0px
+                      margin-top: 0px
+                      padding-bottom: 12px
+                      padding-top: 12px
+                      removeMargin: false
+                      text-align: center
+                      text-valign: top
+                      type: absoluteLink
+                      valign: top
+                      width: 60%
+                  content:
+                    href: 'https://entdecken.ferienwohnung-in-worpswede.de/downloads/worpswede-insider-guide.pdf'
+                    text: '<p><span style="font-family:Arial, helvetica, sans-serif;">📖 Insider-Guide herunterladen (PDF)</span></p>'
+                    title: 'Worpswede-Insider-Guide als PDF herunterladen'
+                -
+                  customBlockId: null
+                  id: a94c6e18-2b3f-4d75-9e08-c5f7d1b8a642
+                  isCustomBlock: null
+                  moduleName: null
+                  sidebarSection: null
+                  sync-module-id: null
+                  thumbnail: /assets/img/editor/element_text.svg
+                  title: Texte
+                  type: text
+                  layout:
+                    320px:
+                      width: 100%
+                    default:
+                      align: left
+                      padding-bottom: 0px
+                      padding-left: 0px
+                      padding-right: 0px
+                      padding-top: 16px
+                      removePadding: false
+                      text-align: left
+                      text-valign: top
+                      valign: top
+                      width: 100%
+                  content: '<p>Dazu schicken wir Ihnen gelegentlich weitere Lieblingsorte, freie Last-Minute-Termine und Neues aus dem Atelier — kein Spam, versprochen.</p><p>Wenn Sie Fragen haben: Antworten Sie einfach auf diese E-Mail, wir lesen persönlich.</p><p>Herzliche Grüße aus Worpswede<br><strong>Markus Lippeck &amp; Anna Schill</strong></p>'
         -
           align: top
           brandable: true
