@@ -228,6 +228,30 @@
     </div>
   </section>
 
+  <!-- ======= Insider-Guide ======= -->
+  <section class="guide" id="insider-guide">
+    <div class="guide-inner">
+      <div class="guide-cover reveal">
+        <a href="/downloads/worpswede-insider-guide.pdf" class="guide-download" data-cta="guide-cover">
+          <img src="/downloads/worpswede-insider-guide-cover.jpg" alt="Cover des Worpswede-Insider-Guides" loading="lazy" />
+        </a>
+      </div>
+      <div class="guide-text reveal">
+        <p class="kicker">Gratis für Sie</p>
+        <h2>Der Worpswede-Insider-Guide</h2>
+        <p>18 Seiten mit allem, was wir unseren Gästen sonst am Frühstückstisch erzählen — geschrieben von zwei Künstlern, die hier leben.</p>
+        <ul class="goody-list guide-list">
+          <li>Die Museen, das Teufelsmoor und die schönsten Fotospots</li>
+          <li>Torfkahnfahrten, Kranich-Schauspiel und Radtouren</li>
+          <li>Unsere Lieblingscafés &amp; Restaurants</li>
+          <li>Zehn Insider-Regeln für einen entspannten Besuch</li>
+        </ul>
+        <button type="button" class="btn btn-primary guide-download" data-cta="guide-button">📖 Guide kostenlos herunterladen</button>
+        <p class="guide-note">Als PDF direkt aufs Gerät — zusammen mit Ihrem 10%-Willkommenscode.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ======= Galerie ======= -->
   <section class="gallery">
     <div class="section-head reveal">
@@ -370,6 +394,26 @@
     </div>
     <p class="footer-note">Diese Seite informiert über die Ferienwohnungen — die Buchung erfolgt sicher auf <a href="https://ferienwohnung-in-worpswede.de/" target="_blank" rel="noopener">ferienwohnung-in-worpswede.de</a>.</p>
   </footer>
+
+  <!-- ======= Guide-Download-Modal ======= -->
+  <div class="modal-backdrop" id="guide-modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="guide-modal-title">
+      <button class="modal-close" id="guide-modal-close" aria-label="Schließen">×</button>
+      <p class="kicker">Fast geschafft …</p>
+      <h3 id="guide-modal-title">Wohin dürfen wir den Guide schicken?</h3>
+      <p>Tragen Sie Ihre E-Mail-Adresse ein — der Download startet sofort, und Sie erhalten zusätzlich Ihren <strong>10%-Willkommenscode</strong> per E-Mail.</p>
+      <form class="goody-form modal-form" id="guide-form" novalidate>
+        <input type="email" name="email" required placeholder="ihre@email.de" aria-label="E-Mail-Adresse" />
+        <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <label class="consent">
+          <input type="checkbox" required />
+          <span>Einverstanden mit E-Mails laut <a href="https://ferienwohnung-in-worpswede.de/de/datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a>. Abmeldung jederzeit.</span>
+        </label>
+        <button type="submit" class="btn btn-primary btn-block">Guide herunterladen</button>
+        <p class="form-msg" role="status"></p>
+      </form>
+    </div>
+  </div>
 
   <!-- ======= Exit-Intent-Modal ======= -->
   <div class="modal-backdrop" id="exit-modal" hidden>

@@ -150,6 +150,52 @@
     });
   });
 
+  /* ---------- Insider-Guide: Download mit E-Mail-Gate ---------- */
+  var GUIDE_URL = "/downloads/worpswede-insider-guide.pdf";
+  var guideModal = document.getElementById("guide-modal");
+  var guideForm = document.getElementById("guide-form");
+
+  function openGuide() {
+    window.open(GUIDE_URL, "_blank", "noopener");
+  }
+
+  function hideGuideModal() {
+    guideModal.hidden = true;
+    document.body.style.overflow = "";
+  }
+
+  document.querySelectorAll(".guide-download").forEach(function (el) {
+    el.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (isSubscribed()) {
+        // E-Mail liegt schon vor -> kein zweites Gate, direkt öffnen
+        openGuide();
+        return;
+      }
+      guideModal.hidden = false;
+      document.body.style.overflow = "hidden";
+      var email = guideModal.querySelector('input[name="email"]');
+      if (email) email.focus();
+    });
+  });
+
+  document.getElementById("guide-modal-close").addEventListener("click", hideGuideModal);
+  guideModal.addEventListener("click", function (e) { if (e.target === guideModal) hideGuideModal(); });
+
+  guideForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    submitForm(guideForm, "funnel-guide-popup", function () {
+      guideForm.outerHTML =
+        '<div class="goody-success">' +
+        '<p class="success-emoji">📖</p>' +
+        "<h3>Viel Freude beim Lesen!</h3>" +
+        '<p>Der Guide öffnet sich in einem neuen Tab. Ihr Rabattcode <strong>WILLKOMMEN10</strong> und der Download-Link kommen zusätzlich per E-Mail.</p>' +
+        '<a class="btn btn-primary" target="_blank" rel="noopener" href="' + GUIDE_URL + '">Guide öffnen (PDF)</a>' +
+        "</div>";
+      openGuide();
+    });
+  });
+
   /* ---------- Exit-Intent-Modal ---------- */
   var modal = document.getElementById("exit-modal");
   var modalForm = document.getElementById("modal-form");
@@ -190,7 +236,10 @@
   document.getElementById("modal-close").addEventListener("click", hideModal);
   modal.addEventListener("click", function (e) { if (e.target === modal) hideModal(); });
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && !modal.hidden) hideModal();
+    if (e.key === "Escape") {
+      if (!modal.hidden) hideModal();
+      if (!guideModal.hidden) hideGuideModal();
+    }
   });
 
   if (FORCE_POPUP) setTimeout(showModal, 500);
