@@ -100,6 +100,42 @@
     });
   });
 
+  /* ---------- Kunst-Slideshow (Gastgeber-Sektion) ---------- */
+  var slideshow = document.getElementById("art-slideshow");
+  if (slideshow) {
+    var slides = slideshow.querySelectorAll(".art-slide");
+    var dotsWrap = slideshow.querySelector(".art-dots");
+    var current = 0;
+    var slideTimer = null;
+
+    slides.forEach(function (_, i) {
+      var dot = document.createElement("button");
+      dot.type = "button";
+      dot.setAttribute("aria-label", "Kunstwerk " + (i + 1));
+      if (i === 0) dot.classList.add("active");
+      dot.addEventListener("click", function () {
+        goToSlide(i);
+        restartTimer();
+      });
+      dotsWrap.appendChild(dot);
+    });
+    var dots = dotsWrap.querySelectorAll("button");
+
+    function goToSlide(i) {
+      current = (i + slides.length) % slides.length;
+      slides.forEach(function (s, j) { s.classList.toggle("active", j === current); });
+      dots.forEach(function (d, j) { d.classList.toggle("active", j === current); });
+    }
+
+    function restartTimer() {
+      clearInterval(slideTimer);
+      slideTimer = setInterval(function () { goToSlide(current + 1); }, 4500);
+    }
+
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduceMotion) restartTimer();
+  }
+
   /* ---------- Buchungs-Widget: Wohnungs-Umschalter ---------- */
   var bookingTabs = document.querySelectorAll(".booking-tab");
   bookingTabs.forEach(function (tab) {
