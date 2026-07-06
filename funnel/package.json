@@ -1,0 +1,14 @@
+{
+  "name": "worpswede-funnel",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Direktbuchungs-Funnel für ferienwohnung-in-worpswede.de — Landingpage mit E-Mail-Capture, gedacht für eine Subdomain (z.B. entdecken.ferienwohnung-in-worpswede.de).",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
