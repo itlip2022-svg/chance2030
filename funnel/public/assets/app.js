@@ -150,14 +150,9 @@
     });
   });
 
-  /* ---------- Insider-Guide: Download mit E-Mail-Gate ---------- */
-  var GUIDE_URL = "/downloads/worpswede-insider-guide.pdf";
+  /* ---------- Insider-Guide: Anforderung nur per E-Mail ---------- */
   var guideModal = document.getElementById("guide-modal");
   var guideForm = document.getElementById("guide-form");
-
-  function openGuide() {
-    window.open(GUIDE_URL, "_blank", "noopener");
-  }
 
   function hideGuideModal() {
     guideModal.hidden = true;
@@ -167,11 +162,6 @@
   document.querySelectorAll(".guide-download").forEach(function (el) {
     el.addEventListener("click", function (e) {
       e.preventDefault();
-      if (isSubscribed()) {
-        // E-Mail liegt schon vor -> kein zweites Gate, direkt öffnen
-        openGuide();
-        return;
-      }
       guideModal.hidden = false;
       document.body.style.overflow = "hidden";
       var email = guideModal.querySelector('input[name="email"]');
@@ -187,12 +177,10 @@
     submitForm(guideForm, "funnel-guide-popup", function () {
       guideForm.outerHTML =
         '<div class="goody-success">' +
-        '<p class="success-emoji">📖</p>' +
-        "<h3>Viel Freude beim Lesen!</h3>" +
-        '<p>Der Guide öffnet sich in einem neuen Tab. Ihr Rabattcode <strong>WILLKOMMEN10</strong> und der Download-Link kommen zusätzlich per E-Mail.</p>' +
-        '<a class="btn btn-primary" target="_blank" rel="noopener" href="' + GUIDE_URL + '">Guide öffnen (PDF)</a>' +
+        '<p class="success-emoji">📬</p>' +
+        "<h3>Der Guide ist unterwegs!</h3>" +
+        '<p>Wir haben Ihnen den Download-Link zusammen mit Ihrem Rabattcode <strong>WILLKOMMEN10</strong> per E-Mail geschickt. Kein Eingang in den nächsten Minuten? Werfen Sie einen Blick in den Spam-Ordner.</p>' +
         "</div>";
-      openGuide();
     });
   });
 
